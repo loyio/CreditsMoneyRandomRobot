@@ -37,9 +37,7 @@ def rand_credits_alipay_tenpay(min_credits, max_credits):
     :return:alipay and tenpay credits
     """
     credits_today = random.randint(min_credits, max_credits)
-    alipay_credits = random.randint(min_credits, credits_today)
+    alipay_credits = random.randint(min_credits/2, 2*credits_today/3)
     tenpay_credits = credits_today - alipay_credits
     credits_wrap = []
-    credits_wrap.append(alipay_credits)
-    credits_wrap.append(tenpay_credits)
-    return credits_wrap
+    return credits_today, alipay_credits, tenpay_credits
