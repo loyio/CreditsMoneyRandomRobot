@@ -2,7 +2,7 @@
 """
 Created on 2019/8/26
 
-@author: susmote
+@author: LoyeLee
 """
 from Func import Utils
 import datetime
@@ -20,13 +20,14 @@ if __name__ == '__main__':
             print("Your input is incorrect,please re-enter!")
     day_list = Utils.rand_days_of_month(pay_days)
     month_credits = 0
+    min_credits, max_credits = Utils.get_min_max_credits(pay_days, 10000)
     for i in range(len(day_list)):
-        credits_today, alipay_credits,tenpay_credits = Utils.rand_credits_alipay_tenpay(350, 600)
+
+        credits_today, alipay_credits,tenpay_credits = Utils.rand_credits_alipay_tenpay(min_credits, max_credits)
         month_credits += credits_today
         if now_day.day == day_list[i]:
             print("\033[31m%s月%2s日: Total:%s,  alipay:%s, tenpay:%s" % (now_day.month, day_list[i], credits_today, alipay_credits, tenpay_credits))
         else:
             print("\033[37m%s月%2s日: Total:%s,  alipay:%s, tenpay:%s"%(now_day.month,day_list[i], credits_today,alipay_credits, tenpay_credits))
 
-    print("\033[34m%s月你一共使用了%s额度，共获得%s积分"%(now_day.month, month_credits, month_credits*5))
-    print("\033[0m")
+    print("\033[34m%s月你一共使用了%s额度，共获得%s积分\033[0m"%(now_day.month, month_credits, month_credits*5))

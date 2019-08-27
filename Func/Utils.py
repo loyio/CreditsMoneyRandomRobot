@@ -2,7 +2,7 @@
 """
 Created on 2019/8/26 
 
-@author: susmote
+@author: LoyeLee
 """
 import calendar
 import datetime
@@ -20,6 +20,7 @@ def rand_days_of_month(days):
     day_list = [i for i in range(1, month_days + 1)]
     if days > month_days:
         print("Your input num has big than the Max of the month,Please rewrite")
+        exit(0)
     else:
         if days == month_days:
             print(day_list)
@@ -41,3 +42,16 @@ def rand_credits_alipay_tenpay(min_credits, max_credits):
     tenpay_credits = credits_today - alipay_credits
     credits_wrap = []
     return credits_today, alipay_credits, tenpay_credits
+
+
+def get_min_max_credits(day_count, max_credits_month):
+    """
+    get the max and min credits with total avg
+    :param day_count: days of the month
+    :param max_credits_month: the maximum credits
+    :return: max_credits and min credits
+    """
+    avg_credit = max_credits_month / day_count
+    max_credits = (3*avg_credit)/2
+    min_credits = avg_credit/2
+    return min_credits, max_credits
